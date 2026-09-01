@@ -14,7 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      meal_plans: {
+        Row: {
+          created_at: string
+          days: Json
+          id: string
+          shopping_list: Json
+          targets: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          days?: Json
+          id?: string
+          shopping_list?: Json
+          targets?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          days?: Json
+          id?: string
+          shopping_list?: Json
+          targets?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          activity_level: string | null
+          age: number | null
+          allergies: string[]
+          created_at: string
+          daily_routine: string | null
+          dietary_preferences: string[]
+          display_name: string | null
+          gender: string | null
+          goal_pace: number
+          height_cm: number | null
+          id: string
+          onboarded: boolean
+          plan: string
+          target_weight_kg: number | null
+          updated_at: string
+          weight_kg: number | null
+        }
+        Insert: {
+          activity_level?: string | null
+          age?: number | null
+          allergies?: string[]
+          created_at?: string
+          daily_routine?: string | null
+          dietary_preferences?: string[]
+          display_name?: string | null
+          gender?: string | null
+          goal_pace?: number
+          height_cm?: number | null
+          id: string
+          onboarded?: boolean
+          plan?: string
+          target_weight_kg?: number | null
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Update: {
+          activity_level?: string | null
+          age?: number | null
+          allergies?: string[]
+          created_at?: string
+          daily_routine?: string | null
+          dietary_preferences?: string[]
+          display_name?: string | null
+          gender?: string | null
+          goal_pace?: number
+          height_cm?: number | null
+          id?: string
+          onboarded?: boolean
+          plan?: string
+          target_weight_kg?: number | null
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      weight_entries: {
+        Row: {
+          created_at: string
+          id: string
+          logged_on: string
+          user_id: string
+          weight_kg: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          logged_on?: string
+          user_id: string
+          weight_kg: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          logged_on?: string
+          user_id?: string
+          weight_kg?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
