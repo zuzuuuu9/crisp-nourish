@@ -3,6 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { calculateMetrics } from "@/lib/nutrition";
 import { buildShoppingList, type Meal, type PlanDay } from "@/lib/meal-plan";
+import type { Json } from "@/integrations/supabase/types";
 
 const MODEL = "google/gemini-3.7-flash";
 const GATEWAY = "https://ai.gateway.lovable.dev/v1/chat/completions";
@@ -213,7 +214,7 @@ ${MEAL_SHAPE}`,
     const shopping = buildShoppingList(days);
     const { data: updated, error: updateError } = await supabase
       .from("meal_plans")
-      .update({ days, shopping_list: shopping })
+      .update({ days: days as unknown as Json, shopping_list: shopping as unknown as Json })
       .eq("id", plan.id)
       .select("id, targets, days, shopping_list, created_at")
       .single();
