@@ -149,7 +149,12 @@ Vary meals across the week, reuse ingredients sensibly to keep shopping cheap, a
     await supabase.from("meal_plans").delete().eq("user_id", userId);
     const { data: inserted, error: insertError } = await supabase
       .from("meal_plans")
-      .insert({ user_id: userId, targets, days, shopping_list: shopping })
+      .insert({
+        user_id: userId,
+        targets: targets as unknown as Json,
+        days: days as unknown as Json,
+        shopping_list: shopping as unknown as Json,
+      })
       .select("id, targets, days, shopping_list, created_at")
       .single();
 
